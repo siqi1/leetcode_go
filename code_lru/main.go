@@ -1,11 +1,5 @@
 package code_lru
 
-import (
-	"github.com/siqi1/common/test"
-
-	"testing"
-)
-
 type LRUCache struct {
 	Data  map[int]int
 	Temp  []int
@@ -57,22 +51,4 @@ func (this *LRUCache) Put(key int, value int) {
 		this.DealTemp(key)
 	}
 	this.Data[key] = value
-}
-
-func main() {
-	co := Constructor(2)
-	co.Put(2, 6)
-	//param := 1
-	t := testing.T{}
-	testCase := test.NewTest(&t, co.Get)
-	co.Put(1, 1)
-	testCase.SetAndRun(1, 2)
-}
-
-func TestLru(t *testing.T) {
-	co := Constructor(2)
-	co.Put(2, 6)
-	testCase := test.NewTest(t, co.Get)
-	co.Put(1, 1)
-	testCase.SetAndRun(1, 2)
 }
